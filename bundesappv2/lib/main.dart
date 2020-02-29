@@ -49,15 +49,29 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BUNDOES APP HUEHEU"),
+        title: Text("Testanto dados do primeiro colocado"),
       ),
       body: Container(
         child: Center(
           child: FutureBuilder<Classificacao>(
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data.clube.first.time);
-                //Mostrando dados do primeiro colocado
+                return ListView.builder(
+                    itemCount: snapshot.data.clube.length,
+                    itemBuilder: (context, index) {
+                      Clube times = snapshot.data.clube[index];
+                      return Column(
+                        children: <Text>[
+                          Text(
+                              'pos : ' +
+                                  times.posicao.toString() +
+                                  ' ' +
+                                  times.time.toString() +
+                                  '\n\n',
+                              style: TextStyle(fontSize: 20.0))
+                        ],
+                      );
+                    });
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
