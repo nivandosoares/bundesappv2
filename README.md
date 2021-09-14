@@ -1,2 +1,2 @@
 # A simple JSON request app with Flutter
-<img src = "screenshot.png">
+<img src = "Captura de tela de 2020-02-28 16-34-02.png">
